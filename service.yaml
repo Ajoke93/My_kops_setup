@@ -1,0 +1,45 @@
+apiVersion: v1
+kind: Service
+metadata:
+  annotations:
+    meta.helm.sh/release-name: ghostapp
+    meta.helm.sh/release-namespace: default
+  creationTimestamp: "2023-08-01T02:41:19Z"
+  finalizers:
+  - service.kubernetes.io/load-balancer-cleanup
+  labels:
+    app.kubernetes.io/component: ghost
+    app.kubernetes.io/instance: ghostapp
+    app.kubernetes.io/managed-by: Helm
+    app.kubernetes.io/name: ghost
+    helm.sh/chart: ghost-19.3.31
+  name: ghostapp
+  namespace: default
+  resourceVersion: "5094"
+  uid: 2598c666-af25-4e27-80cd-726b4a51f576
+spec:
+  allocateLoadBalancerNodePorts: true
+  clusterIP: 100.69.238.58
+  clusterIPs:
+  - 100.69.238.58
+  externalTrafficPolicy: Cluster
+  internalTrafficPolicy: Cluster
+  ipFamilies:
+  - IPv4
+  ipFamilyPolicy: SingleStack
+  ports:
+  - name: http
+    nodePort: 31911
+    port: 80
+    protocol: TCP
+    targetPort: http
+  selector:
+    app.kubernetes.io/component: ghost
+    app.kubernetes.io/instance: ghostapp
+    app.kubernetes.io/name: ghost
+  sessionAffinity: None
+  type: LoadBalancer
+status:
+  loadBalancer:
+    ingress:
+    - hostname: a2598c666af254e2780cd726b4a51f57-704288651.ca-central-1.elb.amazonaws.com
